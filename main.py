@@ -3,7 +3,6 @@ from win32gui import FindWindow, SetWindowPos, SetForegroundWindow
 from win32con import HWND_TOP, SWP_NOSIZE
 
 from pywinauto import Desktop, Application
-import pywintypes
 
 from pyautogui import write, press
 from pyperclip import paste
