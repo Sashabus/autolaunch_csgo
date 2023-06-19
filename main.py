@@ -3,6 +3,7 @@ from win32gui import FindWindow, SetWindowPos, SetForegroundWindow
 from win32con import HWND_TOP, SWP_NOSIZE
 
 from pywinauto import Desktop, Application
+import pywintypes
 
 from pyautogui import write, press
 from pyperclip import paste
@@ -23,7 +24,12 @@ def wait_for_window(window_title):
 
 def activate_window(window_title):
     hwnd = FindWindow(None, window_title)
-    SetForegroundWindow(hwnd)
+    while True:
+        try:
+            SetForegroundWindow(hwnd)
+            break
+        except:  # pywintypes.error
+            sleep(1)
 
 
 def launch_sda():
